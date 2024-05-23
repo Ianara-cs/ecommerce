@@ -42,3 +42,7 @@ class OrderCreateView(generics.ListCreateAPIView):
 
         return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class OrderDetailAPIView(generics.RetrieveAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
