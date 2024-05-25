@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 class Base(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -10,4 +11,5 @@ class Item(Base):
 
 
 class Order(Base): 
-    items = models.ManyToManyField(Item)
+    user = models.ForeignKey(User, related_name='orders', on_delete=models.CASCADE)
+    items = models.ManyToManyField(Item)    
